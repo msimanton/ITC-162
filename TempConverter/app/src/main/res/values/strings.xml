@@ -4,5 +4,5 @@
     <string name="enterFahrenheit">Enter Fahrenheit</string>
     <string name="labelFahrenheit">Fahrenheit</string>
     <string name="labelCelsius">Celsius</string>
-    <string name="resultCelsius">37.778</string>
+    <string name="resultCelsius">0.000</string>
 </resources>
