@@ -1,6 +1,7 @@
 package com.simanton.tempconverter;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.widget.EditText;
@@ -16,6 +17,8 @@ public class MainActivity extends Activity implements EditText.OnEditorActionLis
 
     private String fahrenheitEntry;
 
+    private SharedPreferences savedValues;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,8 @@ public class MainActivity extends Activity implements EditText.OnEditorActionLis
         celsiusTextView = (TextView) findViewById(R.id.celsiusTextView);
 
         fEntryEditText.setOnEditorActionListener(this);
+
+        savedValues = getSharedPreferences("SavedValues", MODE_PRIVATE);
     }
 
     @Override
@@ -34,6 +39,34 @@ public class MainActivity extends Activity implements EditText.OnEditorActionLis
         calcAndDisplay();
         return false;
     }
+
+
+
+    @Override
+    public void onPause() {
+        // save the instance variables
+        SharedPreferences.Editor editor = savedValues.edit();
+        editor.putString("fahrenheitEntry", fahrenheitEntry);
+        editor.commit();
+
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // get the instance variables
+        fahrenheitEntry = savedValues.getString("fahrenheitEntry", "");
+
+
+        // set the temp amount on its widget
+        fEntryEditText.setText(fahrenheitEntry);
+
+        // calculate and display
+        calcAndDisplay();
+    }
+
 
     private void calcAndDisplay() {
 
