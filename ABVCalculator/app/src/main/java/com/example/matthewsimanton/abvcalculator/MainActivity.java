@@ -1,6 +1,7 @@
 package com.example.matthewsimanton.abvcalculator;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -17,6 +18,10 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 
     float sbOG = 0;
     float sbFG = 0;
+
+    //define shared Pref
+    private SharedPreferences savedValues;
+
 
 
 
@@ -39,6 +44,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
         seekBarFG.setOnSeekBarChangeListener(this);
 
 
+        savedValues = getSharedPreferences("SavedValues", MODE_PRIVATE);
 
     }
 
@@ -61,7 +67,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 
 
         //perform the calculation when the seekbar value is changed
-        calcAndDisplay();
+        //calcAndDisplay();
 
     }
 
@@ -72,7 +78,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-
+        calcAndDisplay();
     }
 
     //calculation for ABV
@@ -80,5 +86,23 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
         float calcABV = (float) ((sbOG - sbFG) * 131.25);
 
         textViewABV.setText(Float.toString(calcABV));
+    }
+
+    @Override
+    public void onPause() {
+        SharedPreferences.Editor editor = savedValues.edit();
+        editor.putFloat("sbOG", sbOG);
+        editor.putFloat("sbFG", sbFG);
+        editor.commit();
+
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        sbOG = savedValues.getFloat("sbOG", sbOG);
+        sbFG = savedValues.getFloat("sbFG", sbFG);
+
+        super.onResume();
     }
 }
