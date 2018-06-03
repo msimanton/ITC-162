@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "12437489147",
+    "firebase_url": "https://gettingstarted-cb8ab.firebaseio.com",
+    "project_id": "gettingstarted-cb8ab",
+    "storage_bucket": "gettingstarted-cb8ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:12437489147:android:58ceb3e062dfb2d5",
+        "android_client_info": {
+          "package_name": "com.example.matthewsimanton.usingfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "12437489147-44cgginh88hirf3b2sjruo55p8hpmca2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.matthewsimanton.usingfirebase",
+            "certificate_hash": "c3a1d3a7c5b513857b299bd62121aceaba57a020"
+          }
+        },
+        {
+          "client_id": "12437489147-12onq2lqfsrhm4u3khedm9ft0h09n0hb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAB1JgEhMNFHHD1QYccnjqp1QRyMPI8jB4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "12437489147-12onq2lqfsrhm4u3khedm9ft0h09n0hb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
